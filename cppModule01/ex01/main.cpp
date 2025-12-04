@@ -5,22 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaacosta <jaacosta@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/18 17:08:13 by jaacosta          #+#    #+#             */
-/*   Updated: 2025/11/18 17:08:15 by jaacosta         ###   ########.fr       */
+/*   Created: 2025/11/24 18:51:51 by jaacosta          #+#    #+#             */
+/*   Updated: 2025/11/24 18:51:58 by jaacosta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Zombie.hpp"
 
 int main()
 {
-    std::cout << "Prueba Stack" << std::endl;
-    randomChump("ZombieRandom");
-    std::cout << "randomChump have been finished" << std::endl;
+    Zombie* zombieT;
 
-    std::cout << "Prueba Heap" << std::endl;
-    Zombie *z1 = newZombie("ZombieHeap");
-    z1->announce();
-    delete(z1);
+    zombieT = zombieHorde(3, "Thrall");
+    for (int i = 0; i < 3; i++)
+        zombieT->announce();
+    delete[] zombieT;
     return (0);
-    std::cout << std::endl << "FIN DEL PROGRAMA" << std::endl;  
 }
+

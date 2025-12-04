@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = phonebook
+NAME = brains
 CC = c++
 RM = rm -rf
 CFLAGS =  -Wall -Wextra -Werror -std=c++98 -fsanitize=address ##-MMD
@@ -23,12 +23,9 @@ DEPDIR			= deps
 #                              SOURCE FILES                                    #
 #******************************************************************************#
 
-SRCS 	=	Contact.cpp \
-			Phonebook.cpp \
-			main.cpp
+SRCS 	=	main.cpp
 
-HEADERS =	Contact.hpp \
-			Phonebook.hpp
+#HEADERS =	
 
 #******************************************************************************#
 #                             OBJECTS & DEPS                                   #

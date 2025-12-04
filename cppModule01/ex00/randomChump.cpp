@@ -19,6 +19,7 @@ void	randomChump(std::string name)
 	/*	--- to annnounce the zombie ---	*/
 	normalZombie.announce();
 
+	std::cout << "The zombie have been Destroyed" << std::endl;
 	/**
 	 * in this case the object normalZombie is destroyed
 	 * and it's memory set free automatically when the

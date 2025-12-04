@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = phonebook
+NAME = zombies
 CC = c++
 RM = rm -rf
 CFLAGS =  -Wall -Wextra -Werror -std=c++98 -fsanitize=address ##-MMD
@@ -23,12 +23,12 @@ DEPDIR			= deps
 #                              SOURCE FILES                                    #
 #******************************************************************************#
 
-SRCS 	=	Contact.cpp \
-			Phonebook.cpp \
+SRCS 	=	Zombie.cpp \
+			newZombie.cpp \
+			randomChump.cpp \
 			main.cpp
 
-HEADERS =	Contact.hpp \
-			Phonebook.hpp
+HEADERS =	Zombie.hpp 
 
 #******************************************************************************#
 #                             OBJECTS & DEPS                                   #
@@ -45,7 +45,7 @@ all: dir $(NAME)
 
 $(NAME): Makefile $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $@
-	@echo "\033[1;32m ➜ ➜ CPP00 EX01 [✔]\033[0m"
+	@echo "\033[1;32m ➜ ➜ CPP01 EX00 [✔]\033[0m"
 
 
 $(OBJDIR)/%.o: %.cpp $(HEADERS)
