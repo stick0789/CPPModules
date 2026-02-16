@@ -23,14 +23,14 @@
 const std::string ESC = "\033[";
 
 /** 
- *  Colores de Primer Plano
+ *  Colors in the firs plane.
  */
 const std::string ROJO   = ESC + "31m";
 const std::string VERDE  = ESC + "32m";
 const std::string AZUL   = ESC + "34m";
 
 /** 
- *  Restablecer
+ *  Reset colors
  */
 const std::string RESET  = ESC + "0m";
 

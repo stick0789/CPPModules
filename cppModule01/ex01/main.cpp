@@ -17,7 +17,7 @@ int main()
 
     zombieT = zombieHorde(3, "Thrall");
     for (int i = 0; i < 3; i++)
-        zombieT->announce();
+        zombieT[i].announce();
     delete[] zombieT;
     return (0);
 }
