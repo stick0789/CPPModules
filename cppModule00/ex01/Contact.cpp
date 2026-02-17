@@ -34,38 +34,58 @@ void    Contact::inputInfo()
 {
     std::string input;
     std::cout << "--- New Contact ---"  << std::endl;
-
+    
     /**
      * Using the Do While verify that the field isn't empty
      */
     do
     {
         std::cout << "  First Name:  ";
-        std::getline(std::cin, input);
+        if (!std::getline(std::cin, input))
+        {
+            std::cout << std::endl <<"BYE BYE" << std::endl;
+            exit(0);
+        }
     } while (input.empty());
     firstName = input;
     do
     {
         std::cout << "  Last Name:  ";
-        std::getline(std::cin, input);
+        if (!std::getline(std::cin, input))
+        {
+            std::cout << std::endl <<"BYE BYE" << std::endl;
+            exit(0);
+        }
     } while (input.empty());
     lastName = input;
     do
     {
         std::cout << "  Nickname:  ";
-        std::getline(std::cin, input);
+        if (!std::getline(std::cin, input))
+        {
+            std::cout << std::endl <<"BYE BYE" << std::endl;
+            exit(0);
+        }
     } while (input.empty());
     nickName = input;
     do
     {
         std::cout << "  Phone Number:  ";
-        std::getline(std::cin, input);
+        if (!std::getline(std::cin, input))
+        {
+            std::cout << std::endl <<"BYE BYE" << std::endl;
+            exit(0);
+        }
     } while (input.empty());
     phoneNumber = input;
     do
     {
         std::cout << "  Darkest Secret:  ";
-        std::getline(std::cin, input);
+        if (!std::getline(std::cin, input))
+        {
+            std::cout << std::endl <<"BYE BYE" << std::endl;
+            exit(0);
+        }
     } while (input.empty());
     darkSecret = input;
 

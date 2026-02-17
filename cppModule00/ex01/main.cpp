@@ -24,12 +24,20 @@ int		main()
 	while (1)
 	{
 		std::cout << std::endl << "Input a command (ADD, SEARCH, EXIT): ";
-		std::getline(std::cin, command);
+		if (!std::getline(std::cin, command))
+		{
+			std::cout << std::endl <<"BYE BYE" << std::endl;
+			break;
+    	}
 
 		if (command == "ADD")
+		{
 			myPhonebook.addContact();
+		}
 		else if (command == "SEARCH")
+		{
 			myPhonebook.searchContacts();
+		}
 		else if (command == "EXIT")
 		{
 			std::cout << "Leaving the Phonebook contacst. BYE FOREVER."  << std::endl;

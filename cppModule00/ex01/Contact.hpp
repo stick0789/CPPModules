@@ -17,6 +17,7 @@
 #include <sstream>
 #include <string>
 #include <cctype>
+#include <cstdlib> /* used for exit (0)*/
 
 class Contact
 {
