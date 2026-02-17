@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = phonebook
+NAME = replace
 CC = c++
 RM = rm -rf
 CFLAGS =  -Wall -Wextra -Werror -std=c++98 -fsanitize=address ##-MMD
@@ -23,12 +23,10 @@ DEPDIR			= deps
 #                              SOURCE FILES                                    #
 #******************************************************************************#
 
-SRCS 	=	Contact.cpp \
-			Phonebook.cpp \
-			main.cpp
+SRCS 	=	main.cpp
 
-HEADERS =	Contact.hpp \
-			Phonebook.hpp
+#HEADERS =	Contact.hpp 
+#			Phonebook.hpp
 
 #******************************************************************************#
 #                             OBJECTS & DEPS                                   #
@@ -48,7 +46,7 @@ $(NAME): Makefile $(OBJS)
 	@echo "\033[1;32m ➜ ➜ CPP00 EX01 [✔]\033[0m"
 
 
-$(OBJDIR)/%.o: %.cpp $(HEADERS)
+$(OBJDIR)/%.o: %.cpp #$(HEADERS)
 	@mkdir -p $(dir $@) $(dir $(DEPDIR)/$*.d)
 	@$(CC) $(CFLAGS) $(DEPFLAGS) $(INCLUDE) -c $< -o $@
 
@@ -57,9 +55,11 @@ dir:
 
 clean:
 	@rm -rf $(OBJDIR) $(DEPDIR)
+	@rm -rf *.replace
 	@echo "\033[1;32m ♻ BYE ♻\033[0m"
 
 fclean: clean
+	@rm -rf *.txt 
 	@rm -f $(NAME)
 
 re: fclean all
