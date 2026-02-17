@@ -34,7 +34,7 @@ class HumanB
          * Member function
          */
         void    attack();
-        void    setWeapon(Weapon &weaponB);
+        void    setWeapon(Weapon &weapon);
 
         /**
          * Destructor
