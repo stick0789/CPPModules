@@ -27,6 +27,37 @@ bool Contact::isEmpty() const
     return firstName.empty();
 }
 
+static std::string cleanInput(std::string str)
+{
+    std::string result;
+    bool lastWasSpace = false;
+
+    for (size_t i = 0; i < str.length(); i++)
+    {
+        char c = str[i];
+
+        // if is tab, convert into space
+        if (c == '\t')
+            c = ' ';
+
+        if (c == ' ')
+        {
+            // only add the space if the previous one wasn't space
+            if (!lastWasSpace)
+            {
+                result += c;
+                lastWasSpace = true;
+            }
+        }
+        else
+        {
+            result += c;
+            lastWasSpace = false;
+        }
+    }
+    return result;
+}
+
 /**
  * The logic to add the info of the contact
  */
@@ -46,6 +77,7 @@ void    Contact::inputInfo()
             std::cout << std::endl <<"BYE BYE" << std::endl;
             exit(0);
         }
+        input = cleanInput(input);
     } while (input.empty());
     firstName = input;
     do
@@ -56,6 +88,7 @@ void    Contact::inputInfo()
             std::cout << std::endl <<"BYE BYE" << std::endl;
             exit(0);
         }
+        input = cleanInput(input);
     } while (input.empty());
     lastName = input;
     do
@@ -66,6 +99,7 @@ void    Contact::inputInfo()
             std::cout << std::endl <<"BYE BYE" << std::endl;
             exit(0);
         }
+        input = cleanInput(input);
     } while (input.empty());
     nickName = input;
     do
@@ -76,6 +110,7 @@ void    Contact::inputInfo()
             std::cout << std::endl <<"BYE BYE" << std::endl;
             exit(0);
         }
+        input = cleanInput(input);
     } while (input.empty());
     phoneNumber = input;
     do
@@ -86,6 +121,7 @@ void    Contact::inputInfo()
             std::cout << std::endl <<"BYE BYE" << std::endl;
             exit(0);
         }
+        input = cleanInput(input);
     } while (input.empty());
     darkSecret = input;
 
