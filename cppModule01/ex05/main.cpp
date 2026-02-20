@@ -9,5 +9,15 @@
 /*   Updated: 2026/02/17 21:07:29 by jaacosta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "Harl.hpp"
 
+int main(int argc, char **argv)
+{
+    Harl harl;
+    if (argc != 2)
+        std::cout << "Invalid number of parameters!." << std::endl;
+    else
+        harl.complain(argv[1]);
+    return (0);
+}
 

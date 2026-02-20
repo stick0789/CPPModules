@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 #include <iostream>
 #include <string>
+#include <fstream>
 
 class Harl
 {
@@ -31,7 +32,7 @@ class Harl
         /**
          * Member function
          */
-        void complain( std::string level );
+        void complain( std::string level);
 
         /**
          * Destructor
