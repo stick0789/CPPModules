@@ -21,7 +21,7 @@ Fixed::Fixed() : _fixPointValue(0)
 Fixed::Fixed(const Fixed &other)
 {
     std::cout << "Copy constructor called" << std::endl;
-    // En lugar de repetir código, llamamos al operador de asignación
+    /* Instead repeat code, we call the assigment operator*/
     *this = other;
 }
 
@@ -29,13 +29,13 @@ Fixed::Fixed(const Fixed &other)
 Fixed &Fixed::operator=(const Fixed &other)
 {
     std::cout << "Copy assignment operator called" << std::endl;
-    // 1. Verificamos que no nos estemos asignando a nosotros mismos (a = a)
+    /* Verify we arn't assigment to ourself (a == a)*/
     if (this != &other)
     {
-        // 2. Copiamos los bits "crudos" del otro objeto
+        /* copy the bits from the other object*/
         this->_fixPointValue = other.getRawBits();
     }
-    // 3. Devolvemos el objeto actual para permitir a = b = c;
+    /* Return the actual object to allow a = b = c*/
     return *this;
 }
 
