@@ -1,5 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jaacosta <jaacosta@student.42barcelon      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/21 17:20:12 by jaacosta          #+#    #+#             */
+/*   Updated: 2026/02/21 17:20:14 by jaacosta         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include <iostream>
 #include <string>
+#include <ostream>
 #include <cmath>
 
 class Fixed
@@ -13,8 +25,8 @@ class Fixed
         Fixed(const Fixed &other);/* Default Copy Constructor*/
         Fixed &operator=(const Fixed &other); /* Default Assigment Operator Constructor*/
         
-        Fixed(const int);/* Constructor that takes a constant integer as a parameter.*/
-        Fixed(const float);/* Constructor that takes a constant floating-point number as a parameter.*/
+        Fixed(const int _real);/* Constructor that takes a constant integer as a parameter.*/
+        Fixed(const float _decimal);/* Constructor that takes a constant floating-point number as a parameter.*/
 
         float toFloat( void ) const;/* Function that converts the fixed-point value to a floating-point value.*/
         int toInt( void ) const;/* Function that converts the fixed-point value to an integer value.*/
@@ -22,4 +34,32 @@ class Fixed
         int getRawBits( void ) const;/* Function that returns the raw value of the fixed-point value.*/
         void setRawBits( int const raw );/* Function that sets the raw value of the fixed-point number.*/
         
+        /*4 aritmetic operators*/
+        Fixed operator+(const Fixed &other) const;
+		Fixed operator-(const Fixed &other) const;
+		Fixed operator*(const Fixed &other) const;
+		Fixed operator/(const Fixed &other) const;
+
+        /*6 comparison operators*/
+        bool operator==(const Fixed &other) const;
+		bool operator!=(const Fixed &other) const;
+		bool operator<(const Fixed &other) const;
+		bool operator>(const Fixed &other) const;
+		bool operator<=(const Fixed &other) const;
+		bool operator>=(const Fixed &other) const;
+
+        /*4 increment/decrement*/
+		Fixed& operator++(void);
+		Fixed operator++(int);
+		Fixed& operator--(void);
+		Fixed operator--(int);
+
+        /*static min/max*/
+        static const Fixed& min(const Fixed& f1, const Fixed& f2);
+		static const Fixed& min(Fixed& f1, Fixed& f2);
+		static const Fixed& max(const Fixed& f1, const Fixed& f2);
+		static const Fixed& max(Fixed& f1, Fixed& f2);
+
 };
+
+std::ostream &operator<<(std::ostream &o, Fixed const &i);
