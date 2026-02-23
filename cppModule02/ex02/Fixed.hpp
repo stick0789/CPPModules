@@ -23,7 +23,7 @@ class Fixed
         Fixed();/* Default Constructor*/
         ~Fixed();/* Default Destructor*/
         Fixed(const Fixed &other);/* Default Copy Constructor*/
-        Fixed &operator=(const Fixed &other); /* Default Assigment Operator Constructor*/
+        Fixed &operator=(const Fixed &other); /* Default Copy Assigment Operator Constructor*/
         
         Fixed(const int _real);/* Constructor that takes a constant integer as a parameter.*/
         Fixed(const float _decimal);/* Constructor that takes a constant floating-point number as a parameter.*/

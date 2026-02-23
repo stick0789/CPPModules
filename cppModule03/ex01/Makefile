@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = phonebook
+NAME = claptrap
 CC = c++
 RM = rm -rf
 CFLAGS =  -Wall -Wextra -Werror -std=c++98 -fsanitize=address ##-MMD
@@ -23,12 +23,10 @@ DEPDIR			= deps
 #                              SOURCE FILES                                    #
 #******************************************************************************#
 
-SRCS 	=	Contact.cpp \
-			Phonebook.cpp \
+SRCS 	=	ClapTrap.cpp \
 			main.cpp
 
-HEADERS =	Contact.hpp \
-			Phonebook.hpp
+HEADERS =	ClapTrap.hpp 
 
 #******************************************************************************#
 #                             OBJECTS & DEPS                                   #
@@ -45,7 +43,7 @@ all: dir $(NAME)
 
 $(NAME): Makefile $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $@
-	@echo "\033[1;32m ➜ ➜ CPP00 EX01 [✔]\033[0m"
+	@echo "\033[1;32m ➜ ➜ CPP03 EX01 [✔]\033[0m"
 
 
 $(OBJDIR)/%.o: %.cpp $(HEADERS)
