@@ -9,6 +9,8 @@
 /*   Updated: 2026/02/23 17:25:05 by jaacosta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#ifndef CLAVTRAP_HPP
+# define CLAVTRAP_HPP
 #include <iostream>
 #include <string>
 
@@ -32,3 +34,5 @@ class ClapTrap
         void beRepaired(unsigned int amount);
 
 };
+
+#endif

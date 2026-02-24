@@ -25,10 +25,12 @@ DEPDIR			= deps
 
 SRCS 	=	ClapTrap.cpp \
 			ScavTrap.cpp \
+			FragTrap.cpp \
 			main.cpp
 
 HEADERS =	ClapTrap.hpp \
-			ScavTrap.hpp
+			ScavTrap.hpp \
+			FragTrap.hpp
 
 #******************************************************************************#
 #                             OBJECTS & DEPS                                   #
@@ -45,7 +47,7 @@ all: dir $(NAME)
 
 $(NAME): Makefile $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $@
-	@echo "\033[1;32m ➜ ➜ CPP03 EX01 [✔]\033[0m"
+	@echo "\033[1;32m ➜ ➜ CPP03 EX02 [✔]\033[0m"
 
 
 $(OBJDIR)/%.o: %.cpp $(HEADERS)

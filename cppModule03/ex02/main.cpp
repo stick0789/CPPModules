@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main()
 {
@@ -32,11 +33,20 @@ int main()
     std::cout << "--- CREATING SCAV ---" << std::endl;
     ScavTrap scav("Scavvy");
 
-    std::cout << "\n--- TESTING ACTIONS ---" << std::endl;
+    std::cout << "--- CREATING FRAG ---" << std::endl;
+    FragTrap fraggy("Fraggy");
+
+    std::cout << "\n--- TESTING ACTIONS FOR SCAV---" << std::endl;
     scav.attack("an intruder");
     scav.guardGate();
     scav.takeDamage(50);
     scav.beRepaired(20);
+    std::cout << "\n--- TESTING ACTIONS FOR FRAG---" << std::endl;
+    fraggy.attack("a bully");
+    fraggy.highFivesGuys();
+    fraggy.takeDamage(60);
+    fraggy.beRepaired(30);
+
 
     std::cout << "\n--- DESTROYING ---" << std::endl;
     return 0;
