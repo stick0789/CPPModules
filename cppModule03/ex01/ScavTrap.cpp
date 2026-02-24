@@ -11,13 +11,13 @@
 /* ************************************************************************** */
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(std::string _name) : ClapTrap(_name)
+ScavTrap::ScavTrap(std::string _name) : ClapTrap(_name)/* using (ClapTrap(_name) we build first the father )*/
 {
     /* using this, set the new points to the child scavtrap.*/
     this->_hitPoints = 100;
     this->_energyPoints = 50;
     this-> _attackDamage = 20;
-    std::cout << "ScavTrap " << _name << " has been created!" << std::endl;
+    std::cout << "ScavTrap the Child " << _name << " has been created!" << std::endl;
 }
 
 ScavTrap::~ScavTrap()
@@ -25,10 +25,15 @@ ScavTrap::~ScavTrap()
     std::cout << "ScavTrap " << _name << " has been destroyed!" << std::endl;
 }
 
+ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other) /*Calling the fathers copy constructor*/
+{
+    std::cout << "ScavTrap copy constructor called for " << _name << std::endl;
+}
+
 ScavTrap &ScavTrap::operator=(const ScavTrap &other)
 {
     if (this != &other) {
-        ClapTrap::operator=(other); // Llama al operador del padre
+        ClapTrap::operator=(other); /* calling the fathers operator*/
     }
     return *this;
 }
