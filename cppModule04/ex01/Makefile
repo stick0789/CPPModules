@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = claptrap
+NAME = polymorphism
 CC = c++
 RM = rm -rf
 CFLAGS =  -Wall -Wextra -Werror -std=c++98 -fsanitize=address ##-MMD
@@ -24,10 +24,20 @@ DEPDIR			= deps
 #                              SOURCE FILES                                    #
 #******************************************************************************#
 
-SRCS 	=	ClapTrap.cpp \
+SRCS 	=	Animal.cpp \
+			Cat.cpp \
+			Dog.cpp \
+			WrongAnimal.cpp \
+			WrongCat.cpp \
+			Brain.cpp \
 			main.cpp
 
-HEADERS =	ClapTrap.hpp 
+HEADERS =	Animal.hpp \
+			Cat.hpp \
+			Dog.hpp \
+			WrongAnimal.hpp \
+			WrongCat.hpp \
+			Brain.hpp 
 
 #******************************************************************************#
 #                             OBJECTS & DEPS                                   #
