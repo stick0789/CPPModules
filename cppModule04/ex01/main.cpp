@@ -49,15 +49,30 @@ int main()
     std::cout << std::endl;
     std::cout << "--- TESTING DEEP COPY ---" << std::endl;
     Dog originalDog;
-    originalDog.setBrainIdea("I want a bone.");
+    originalDog.setBrainIdea(0, "I want a bone.");
     Dog copiedDog = originalDog; // Invokes copy constructor
 
-    originalDog.setBrainIdea("Changed idea");
+    originalDog.setBrainIdea(0, "Changed idea");
 
     std::cout << "Original Dog idea: " << std::endl;
     originalDog.getBrainIdea(0);
     std::cout << "Copied Dog idea: " << std::endl;
     copiedDog.getBrainIdea(0);
+
+    std::cout << std::endl;
+    std::cout << "--- TESTING DEEP COPY PART 2 ---" << std::endl;
+
+    Dog real;
+    real.setBrainIdea(0, "Idea A");
+    real.setBrainIdea(1, "Idea B");
+
+    Dog copy = real;
+    real.setBrainIdea(0, "Idea A modificada");
+
+    std::cout << "Copia Idea 0 (debe ser Idea A): ";
+    copy.getBrainIdea(0);
+    std::cout << "Copia Idea 1 (debe ser Idea B): ";
+    copy.getBrainIdea(1);
 
     std::cout << "\nProgram finished without leaks.\n";
 
