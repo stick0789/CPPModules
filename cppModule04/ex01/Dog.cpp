@@ -49,10 +49,10 @@ void Dog::makeSound() const
     std::cout << "Woof! Woof!" << std::endl;
 }
 
-void	Dog::setBrainIdea(std::string idea) const
+void	Dog::setBrainIdea(int index, std::string idea) const
 {
 	if (_dogBrain)
-		_dogBrain->setIdeas(idea);
+		_dogBrain->setIdeas(index, idea);
 	else
 		std::cout << "This dog doesn't have a brain" << std::endl;
 }

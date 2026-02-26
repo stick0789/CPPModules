@@ -50,10 +50,10 @@ void Cat::makeSound() const
 }
 
 
-void	Cat::setBrainIdea(std::string idea) const
+void	Cat::setBrainIdea(int index, std::string idea) const
 {
 	if (_catBrain)
-		_catBrain->setIdeas(idea);
+		_catBrain->setIdeas(index, idea);
 	else
 		std::cout << "This CAT doesn't have a brain" << std::endl;
 }

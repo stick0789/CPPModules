@@ -27,7 +27,7 @@ class Cat : public Animal
         virtual ~Cat();/*Destructor FOC use the virtual is a good practice but not necessary*/
 
         virtual void makeSound() const;
-        void	setBrainIdea(std::string idea) const;
+        void	setBrainIdea(int index, std::string idea) const;
         void	getBrainIdea(int index) const;
 
 };

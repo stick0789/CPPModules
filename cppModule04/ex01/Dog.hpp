@@ -27,7 +27,7 @@ class Dog : public Animal
         virtual ~Dog();/*Destructor FOC*/
 
         virtual void makeSound() const;
-        void	setBrainIdea(std::string idea) const;
+        void	setBrainIdea(int index, std::string idea) const;
         void	getBrainIdea(int index) const;
 };
 

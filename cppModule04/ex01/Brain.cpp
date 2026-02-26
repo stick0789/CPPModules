@@ -32,11 +32,15 @@ Brain & Brain::operator=(const Brain &other)
 	return (*this);
 }
 
-void Brain::setIdeas(const std::string idea)
+void Brain::setIdeas(int index, const std::string& idea)
 {
-	std::cout << "Brain Set Ideas called" << std::endl;
-	for (int i = 0; i < 100; i++)
-		_ideas[i] = idea;
+	if (index >= 0 && index < 100)
+    {
+        this->_ideas[index] = idea;
+        std::cout << "Idea " << index << " set in Brain" << std::endl;
+    }
+    else
+        std::cout << "Invalid index for setting idea" << std::endl;
 }
 
 void Brain::getIdea(int index) const
