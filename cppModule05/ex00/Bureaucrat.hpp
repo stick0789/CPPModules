@@ -22,6 +22,10 @@ class   Bureaucrat
         std::string const   getName()const;
         int                 getGrade()const;
 
+        //increment - decrement
+        void    incrementGrade();
+        void    decrementGrade();
+
         //Catch Exception
         //here the "GradeTooHighException" class innherit the standar class exception(father)
         class GradeTooHighException : public std::exception
@@ -50,6 +54,6 @@ class   Bureaucrat
         int _grade;
 };
 
-std::ostream &operator<<(std::ostream os, const Bureaucrat &b);
+std::ostream &operator<<(std::ostream &os, const Bureaucrat &b);
 
 #endif
