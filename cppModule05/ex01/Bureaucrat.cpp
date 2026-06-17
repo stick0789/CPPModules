@@ -25,7 +25,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &obj)
     return *this;
 }
 
-std::string const Bureaucrat::getName() const
+const std::string  Bureaucrat::getName() const
 {
     return(_name);
 }
@@ -35,18 +35,26 @@ int Bureaucrat::getGrade() const
     return(_grade);
 }
 
-void Bureaucrat::incrementGrade()
+void Bureaucrat::incrementGrade(int num)
 {
-    if (_grade <= MAX_GRADE)
+    if (num < 0)
+        return ;
+    
+    int nextGrade =_grade - num;
+    if (nextGrade <= MAX_GRADE)
         throw GradeTooHighException();
-    _grade--;
+    _grade = nextGrade;
 }
 
-void Bureaucrat::decrementGrade()
+void Bureaucrat::decrementGrade(int num)
 {
-    if (_grade >= MIN_GRADE)
+    if (num < 0)
+        return ;
+    
+    int nextGrade =_grade + num;
+    if (nextGrade >= MIN_GRADE)
         throw GradeTooLowException();
-    _grade++;
+    _grade = nextGrade;
 }
 
 const char *Bureaucrat::GradeTooHighException::what(void) const throw()
@@ -57,6 +65,21 @@ const char *Bureaucrat::GradeTooHighException::what(void) const throw()
 const char *Bureaucrat::GradeTooLowException::what(void) const throw()
 {
     return("Grade too LOW");
+}
+
+void Bureaucrat::signForm(Form &f)
+{
+    try
+    {
+        f.beSigned(*this);
+        std::cout << _name << " Signed " << f.getName() << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cout << _name << " Couldn't Sign " << f.getName() << " Because " << e.what() << std::endl;
+    }
+    
+    
 }
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &b)

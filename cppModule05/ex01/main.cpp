@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main()
 {
@@ -126,6 +127,109 @@ int main()
         original.decrementGrade();
         std::cout << "Original: " << original << std::endl;
         std::cout << "Copy: " << clone << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << "You Failed... Why?... --> "<< e.what() << '\n';
+    }
+    std::cout << std::endl;
+
+    std::cout << "~~~ Test 9: Form Creation And Printing ~~~" << std::endl;
+    try
+    {
+        // Creamos un formulario normal por defecto y uno parametrizado válido
+        Form defaultForm;
+        Form taxForm("Tax Reduction 28B", false, 45, 20);
+
+        std::cout << defaultForm << std::endl;
+        std::cout << taxForm << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << "You Failed... Why?... --> "<< e.what() << '\n';
+    }
+    std::cout << std::endl;
+
+    std::cout << "~~~ Test 10: Form Creation And Fail (Too High) ~~~" << std::endl;
+    try
+    {
+        // Grado ilegal 0 (MAX_GRADE es 1) [cite: 130, 166]
+        Form illegalForm("Top Secret Plan", false, 0, 50);
+        std::cout << illegalForm << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << "You Failed... Why?... --> "<< e.what() << '\n';
+    }
+    std::cout << std::endl;
+
+    std::cout << "~~~ Test 11: Form Creation And Fail (Too Low) ~~~" << std::endl;
+    try
+    {
+        // Grado ilegal 151 (MIN_GRADE es 150) [cite: 130, 166]
+        Form illegalForm("Coffee Request", false, 50, 151);
+        std::cout << illegalForm << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << "You Failed... Why?... --> "<< e.what() << '\n';
+    }
+    std::cout << std::endl;
+
+    std::cout << "~~~ Test 12: Successful Form Signing ~~~" << std::endl;
+    try
+    {
+        Bureaucrat chief("Profesor", 10);
+        Form contract("Planet Express Contract", false, 25, 25);
+
+        std::cout << contract << std::endl;
+        
+        // El Profesor tiene grado 10, requiere grado 25. Debería poder firmar[cite: 172].
+        std::cout << "Attempting to sign form..." << std::endl;
+        chief.signForm(contract); // Esto llama internamente a beSigned() [cite: 175]
+
+        // Verificamos que el estado del formulario cambió a "Signed Yes"
+        std::cout << contract << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << "You Failed... Why?... --> "<< e.what() << '\n';
+    }
+    std::cout << std::endl;
+
+    std::cout << "~~~ Test 13: Failed Form Signing (Grade Too Low) ~~~" << std::endl;
+    try
+    {
+        Bureaucrat assistant("Fry", 150);
+        Form contract("Important NDA", false, 50, 50);
+
+        std::cout << contract << std::endl;
+
+        // Fry tiene grado 150, requiere grado 50. Debería fallar[cite: 173].
+        std::cout << "Attempting to sign form..." << std::endl;
+        assistant.signForm(contract); // Lanza la excepción y es atrapada dentro de signForm() [cite: 175, 179]
+
+        // El formulario debe seguir sin firmar
+        std::cout << contract << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << "You Failed... Why?... --> "<< e.what() << '\n';
+    }
+    std::cout << std::endl;
+
+    std::cout << "~~~ Test 14: Form Canonical Form Check ~~~" << std::endl;
+    try
+    {
+        Form original("Original Form", false, 42, 42);
+        Form clone(original);
+        Form assigned;
+
+        assigned = original;
+
+        std::cout << "Original: " << original << std::endl;
+        std::cout << "Clone:    " << clone << std::endl;
+        std::cout << "Assigned: " << assigned << std::endl;
     }
     catch(const std::exception& e)
     {

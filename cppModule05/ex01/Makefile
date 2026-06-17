@@ -25,9 +25,11 @@ DEPDIR			= deps
 #******************************************************************************#
 
 SRCS 	=	Bureaucrat.cpp \
+			Form.cpp \
 			main.cpp
 
-HEADERS =	Bureaucrat.hpp 
+HEADERS =	Bureaucrat.hpp \
+			Form.hpp
 
 #******************************************************************************#
 #                             OBJECTS & DEPS                                   #
@@ -44,7 +46,7 @@ all: dir $(NAME)
 
 $(NAME): Makefile $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $@
-	@echo "\033[1;32m ➜ ➜ CPP05 EX00 [✔]\033[0m"
+	@echo "\033[1;32m ➜ ➜ CPP05 EX01 [✔]\033[0m"
 
 
 $(OBJDIR)/%.o: %.cpp $(HEADERS)

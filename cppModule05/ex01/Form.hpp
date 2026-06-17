@@ -1,33 +1,29 @@
-#ifndef BUREAUCRAT_HPP
-#define BUREAUCRAT_HPP
-
+#ifndef FORM_HPP
+#define FORM_HPP
 
 #include <iostream>
-#include <string>
-#include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 #define MAX_GRADE 1
 #define MIN_GRADE 150
 
-class Form;
+class Bureaucrat;
 
-class   Bureaucrat
+class Form
 {
     public:
-        //Cannonnical
-        Bureaucrat();
-        Bureaucrat(const std::string &name, int grade);
-        Bureaucrat(const Bureaucrat &obj);
-        Bureaucrat &operator=(const Bureaucrat &obj);
-        ~Bureaucrat();
+        //Cannonical
+        Form();
+        Form(const std::string &name, bool isSigned, const int gradeToSign, const int gradeToExecute);
+        Form(const Form &obj);
+        Form &operator=(const Form &obj);
+        ~Form();
 
         //Getters
         const std::string   getName()const;
-        int                 getGrade()const;
-
-        //increment - decrement
-        void    incrementGrade(int num = 1);
-        void    decrementGrade(int num = 1);
+        bool                getIsSigned() const;
+        int           getGradeToSign() const;
+        int           getGradeToExecute() const;
 
         //Catch Exception
         //here the "GradeTooHighException" class innherit the standar class exception(father)
@@ -50,16 +46,18 @@ class   Bureaucrat
                 //is a exception specification, it will never send an execption inside itself
                 const char *what() const throw();
 
-        };
+        };  
 
-        //Member Function 
-        void signForm(Form &f);
+        //Member Function
+        void beSigned(const Bureaucrat &bureaucrat);
 
     private:
-        const std::string _name;
-        int _grade;
+        const std::string   _name;
+        bool                _isSigned;
+        const int           _gradeToSign;
+        const int          _gradeToExecute;
 };
 
-std::ostream &operator<<(std::ostream &os, const Bureaucrat &b);
+std::ostream &operator<<(std::ostream &os, const Form &f);
 
 #endif
