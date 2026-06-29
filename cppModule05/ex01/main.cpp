@@ -116,13 +116,15 @@ int main()
     {
         Bureaucrat original("original", 43);
         Bureaucrat clone(original); //Copy Constructor
-        Bureaucrat assigned;    //Assigned Constructor (by default)
+        Bureaucrat byDefault;    // print the Default values
+        Bureaucrat assigned = original; //Assigned Constructor
 
         std::cout << "Original: " << original << std::endl;
         std::cout << "Copy: " << clone << std::endl;
-        std::cout << "By Default: " << assigned << std::endl;
+        std::cout << "By Default: " << byDefault << std::endl;
+        std::cout << "Assigned Constructor: " << assigned << std::endl;
 
-        //  ----    Promoting Original ----
+        //  ----    Promoting Original  ----
         std::cout << "Promoting Bureaucrat" << std::endl;
         original.decrementGrade();
         std::cout << "Original: " << original << std::endl;
@@ -137,7 +139,7 @@ int main()
     std::cout << "~~~ Test 9: Form Creation And Printing ~~~" << std::endl;
     try
     {
-        // Creamos un formulario normal por defecto y uno parametrizado válido
+        //  ----    Form Creation Testing   ----
         Form defaultForm;
         Form taxForm("Tax Reduction 28B", false, 45, 20);
 
@@ -153,7 +155,7 @@ int main()
     std::cout << "~~~ Test 10: Form Creation And Fail (Too High) ~~~" << std::endl;
     try
     {
-        // Grado ilegal 0 (MAX_GRADE es 1) [cite: 130, 166]
+        //  ----    Ilegal Grade 0 (MAX_GRADE es 1) ----~
         Form illegalForm("Top Secret Plan", false, 0, 50);
         std::cout << illegalForm << std::endl;
     }
@@ -166,7 +168,7 @@ int main()
     std::cout << "~~~ Test 11: Form Creation And Fail (Too Low) ~~~" << std::endl;
     try
     {
-        // Grado ilegal 151 (MIN_GRADE es 150) [cite: 130, 166]
+        //  ----    Ilegal Grade 151 (MIN_GRADE 150)    ----
         Form illegalForm("Coffee Request", false, 50, 151);
         std::cout << illegalForm << std::endl;
     }
@@ -230,6 +232,69 @@ int main()
         std::cout << "Original: " << original << std::endl;
         std::cout << "Clone:    " << clone << std::endl;
         std::cout << "Assigned: " << assigned << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << "You Failed... Why?... --> "<< e.what() << '\n';
+    }
+    std::cout << std::endl;
+
+    std::cout << "~~~ Test 15: Grade Modification via Custom Blocks ~~~" << std::endl;
+    try
+    {
+        Bureaucrat midManager("Hermes Conrad", 50);
+        std::cout << midManager << std::endl;
+
+        //  ---- Trying a big increment validations (from grade 50 to 30)   ----
+        std::cout << "Promoting Hermes by 20 grades..." << std::endl;
+        midManager.incrementGrade(20);
+        std::cout << midManager << std::endl;
+
+        //  ---- Trying a big degrading validations (from grade 30 to 80)   ----
+        std::cout << "Degrading Hermes by 50 grades..." << std::endl;
+        midManager.decrementGrade(50);
+        std::cout << midManager << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << "You Failed... Why?... --> "<< e.what() << '\n';
+    }
+    std::cout << std::endl;
+
+    std::cout << "~~~ Test 16: Custom Block Modification Out of Bounds ~~~" << std::endl;
+    try
+    {
+        Bureaucrat elite("Elite Officer", 5);
+        std::cout << elite << std::endl;
+
+        //  ---- Trying promote 10 grades.Should be -5 (Ilegal)   ----
+        std::cout << "Attempting to promote Elite Officer by 10 grades..." << std::endl;
+        elite.incrementGrade(10); 
+        std::cout << elite << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cout << "Catched expected exception: --> " << e.what() << std::endl;
+    }
+    std::cout << std::endl;
+
+    std::cout << "~~~ Test 17: Attempting to Sign an Already Signed Form ~~~" << std::endl;
+    try
+    {
+        Bureaucrat chief("Profesor", 1);
+        Bureaucrat assistant("Fry", 150);
+        Form importantContract("Planet Express Ownership", false, 10, 10);
+
+        std::cout << importantContract << std::endl;
+
+        //  ---- Frist Sign (should Succes) ----
+        std::cout << "First attempt (Chief signs):" << std::endl;
+        chief.signForm(importantContract);
+        std::cout << importantContract << std::endl;
+
+        //  ---- Second Sign (shouldn't Success)    ----
+        std::cout << "\nSecond attempt (Assistant tries to sign already signed form):" << std::endl;
+        assistant.signForm(importantContract);
     }
     catch(const std::exception& e)
     {

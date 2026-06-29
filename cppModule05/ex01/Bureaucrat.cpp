@@ -69,6 +69,11 @@ const char *Bureaucrat::GradeTooLowException::what(void) const throw()
 
 void Bureaucrat::signForm(Form &f)
 {
+    if (f.getIsSigned())
+    {
+        std::cout << _name << " Couldn't Sign " << f.getName() << " Because the form is ALREADY SIGNED." << std::endl;
+        return ;
+    }
     try
     {
         f.beSigned(*this);
