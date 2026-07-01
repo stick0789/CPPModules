@@ -67,7 +67,7 @@ const char *Bureaucrat::GradeTooLowException::what(void) const throw()
     return("Grade too LOW");
 }
 
-void Bureaucrat::signForm(Form &f)
+void Bureaucrat::signForm(AForm &f)
 {
     if (f.getIsSigned())
     {
@@ -85,6 +85,11 @@ void Bureaucrat::signForm(Form &f)
     }
     
     
+}
+
+void Bureaucrat::executeForm(AForm const & form) const
+{
+
 }
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &b)

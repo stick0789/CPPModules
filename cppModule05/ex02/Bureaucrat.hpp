@@ -4,12 +4,12 @@
 
 #include <iostream>
 #include <string>
-#include "Form.hpp"
+#include "AForm.hpp"
 
 #define MAX_GRADE 1
 #define MIN_GRADE 150
 
-class Form;
+class AForm;
 
 class   Bureaucrat
 {
@@ -53,7 +53,8 @@ class   Bureaucrat
         };
 
         //Member Function 
-        void signForm(Form &f);
+        void signForm(AForm &f);
+        void executeForm(AForm const & form) const;
 
     private:
         const std::string _name;

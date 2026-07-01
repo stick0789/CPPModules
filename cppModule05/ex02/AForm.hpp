@@ -1,5 +1,5 @@
-#ifndef FORM_HPP
-#define FORM_HPP
+#ifndef AFORM_HPP
+#define AFORM_HPP
 
 #include <iostream>
 #include "Bureaucrat.hpp"
@@ -9,15 +9,15 @@
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
     public:
         //Cannonical
-        Form();
-        Form(const std::string &name, bool isSigned, const int gradeToSign, const int gradeToExecute);
-        Form(const Form &obj);
-        Form &operator=(const Form &obj);
-        ~Form();
+        AForm();
+        AForm(const std::string &name, bool isSigned, const int gradeToSign, const int gradeToExecute);
+        AForm(const AForm &obj);
+        AForm &operator=(const AForm &obj);
+        ~AForm();
 
         //Getters
         const std::string   getName()const;
@@ -51,6 +51,9 @@ class Form
         //Member Function
         void beSigned(const Bureaucrat &bureaucrat);
 
+        //Abstract
+        virtual void execute(Bureaucrat const & executor) const = 0;
+
     private:
         const std::string   _name;
         bool                _isSigned;
@@ -58,6 +61,6 @@ class Form
         const int          _gradeToExecute;
 };
 
-std::ostream &operator<<(std::ostream &os, const Form &f);
+std::ostream &operator<<(std::ostream &os, const AForm &f);
 
 #endif
