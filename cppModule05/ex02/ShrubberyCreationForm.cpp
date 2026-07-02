@@ -12,11 +12,6 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &obj)
 :AForm(obj),
 _target(obj._target)
 {}
-/*_name(obj._name),
-_isSigned(obj._isSigned),
-_gradeToSign(obj._gradeToSign),
-_gradeToExecute(obj._gradeToExecute)*/
-
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &obj)
 {
@@ -26,6 +21,33 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
         _target = obj._target;
     }
     return (*this);
+}
+
+const char *ShrubberyCreationForm::FileNotOpenException::what(void) const throw()
+{
+    return("You don't have write permissions");
+}
+
+void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
+{
+    if (!getIsSigned())
+        throw NotSignedException();
+    if (executor.getGrade() > getGradeToExecute())
+        throw GradeTooLowException(); 
+    std::string name = _target + "_shrubbery";
+    std::ofstream file(name.c_str());
+    if (!file.is_open())
+        throw FileNotOpenException();
+    file << "       _-_" << std::endl;
+    file << "    /~~   ~~\\" << std::endl;
+    file << " /~~         ~~\\" << std::endl;
+    file << "{               }" << std::endl;
+    file << " \\  _-     -_  /" << std::endl;
+    file << "   ~  \\\\ //  ~" << std::endl;
+    file << "_- -   | | _- _" << std::endl;
+    file << "  _ -  | |   -_" << std::endl;
+    file << "      // \\\\" << std::endl;
+    file.close();
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm()

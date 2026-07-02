@@ -46,7 +46,29 @@ class AForm
                 //is a exception specification, it will never send an execption inside itself
                 const char *what() const throw();
 
-        };  
+        };
+
+        class NotSignedException : public std::exception
+        {
+            public:
+                //What? ->
+                //Virtual method in charge to return a error message(string)
+                //throw?
+                //is a exception specification, it will never send an execption inside itself
+                const char *what() const throw();
+
+        };
+
+        class NotSignedException : public std::exception
+        {
+            public:
+                //What? ->
+                //Virtual method in charge to return a error message(string)
+                //throw?
+                //is a exception specification, it will never send an execption inside itself
+                const char *what() const throw();
+
+        };
 
         //Member Function
         void beSigned(const Bureaucrat &bureaucrat);
