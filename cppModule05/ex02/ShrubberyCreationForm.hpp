@@ -13,7 +13,7 @@ class ShrubberyCreationForm : public AForm
         ShrubberyCreationForm(const std::string &target);
         ShrubberyCreationForm(const ShrubberyCreationForm &obj);
         ShrubberyCreationForm &operator=(const ShrubberyCreationForm &obj);
-        ~ShrubberyCreationForm();
+        virtual ~ShrubberyCreationForm();
 
         class FileNotOpenException : public std::exception
         {

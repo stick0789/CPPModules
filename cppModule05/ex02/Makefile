@@ -25,11 +25,17 @@ DEPDIR			= deps
 #******************************************************************************#
 
 SRCS 	=	Bureaucrat.cpp \
-			Form.cpp \
+			AForm.cpp \
+			ShrubberyCreationForm.cpp \
+			RobotomyRequestForm.cpp \
+			PresidentialPardonForm.cpp \
 			main.cpp
 
 HEADERS =	Bureaucrat.hpp \
-			Form.hpp
+			AForm.hpp \
+			ShrubberyCreationForm.hpp \
+			RobotomyRequestForm.hpp \
+			PresidentialPardonForm.hpp
 
 #******************************************************************************#
 #                             OBJECTS & DEPS                                   #

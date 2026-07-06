@@ -30,10 +30,7 @@ const char *ShrubberyCreationForm::FileNotOpenException::what(void) const throw(
 
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
-    if (!getIsSigned())
-        throw NotSignedException();
-    if (executor.getGrade() > getGradeToExecute())
-        throw GradeTooLowException(); 
+    AForm::execute(executor); 
     std::string name = _target + "_shrubbery";
     std::ofstream file(name.c_str());
     if (!file.is_open())

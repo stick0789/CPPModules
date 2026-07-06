@@ -54,7 +54,7 @@ class   Bureaucrat
 
         //Member Function 
         void signForm(AForm &f);
-        void executeForm(AForm const & form) const;
+        void executeForm(AForm const &form) const;
 
     private:
         const std::string _name;

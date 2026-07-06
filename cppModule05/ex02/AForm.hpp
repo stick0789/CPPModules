@@ -17,7 +17,7 @@ class AForm
         AForm(const std::string &name, bool isSigned, const int gradeToSign, const int gradeToExecute);
         AForm(const AForm &obj);
         AForm &operator=(const AForm &obj);
-        ~AForm();
+        virtual ~AForm();
 
         //Getters
         const std::string   getName()const;
@@ -59,7 +59,7 @@ class AForm
 
         };
 
-        class NotSignedException : public std::exception
+        /*class NotSignedException : public std::exception
         {
             public:
                 //What? ->
@@ -68,13 +68,13 @@ class AForm
                 //is a exception specification, it will never send an execption inside itself
                 const char *what() const throw();
 
-        };
+        };*/
 
         //Member Function
         void beSigned(const Bureaucrat &bureaucrat);
 
         //Abstract
-        virtual void execute(Bureaucrat const & executor) const = 0;
+        virtual void execute(Bureaucrat const &executor) const = 0;
 
     private:
         const std::string   _name;
