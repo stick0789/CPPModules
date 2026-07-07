@@ -185,5 +185,69 @@ int main()
     }
     std::cout << std::endl;
 
+    std::cout << "~~~ Test 10: Robotomy Test ~~~" << std::endl;
+    try
+    {
+        //  ----    Creating Diferents Levels of Breaucrats ----
+        Bureaucrat highLevelB("Profesor", 1);
+        Bureaucrat midLevelB("Hermes", 40);
+        Bureaucrat lowLevelB("Fry", 150);
+        //  ----    Form Creation Testing 72-45   ----
+        AForm *myFormA = new RobotomyRequestForm("RobotomyA");
+        std::cout << *myFormA << std::endl;
+
+        std::cout << std::endl;
+        lowLevelB.signForm(*myFormA);       //  Failure
+        lowLevelB.executeForm(*myFormA);    //  Not Signed and low level
+        highLevelB.signForm(*myFormA);      //  Success
+        lowLevelB.executeForm(*myFormA);    //  Failure low level
+        highLevelB.executeForm(*myFormA);   //  Success
+        midLevelB.signForm(*myFormA);       //  Already Signed
+        midLevelB.executeForm(*myFormA);    //  Success
+        std::cout << std::endl;
+
+        //  ----    Form Creation Status   ----
+        std::cout << std::endl;
+        std::cout << *myFormA << std::endl;
+        delete myFormA;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << "You Failed... Why?... --> "<< e.what() << '\n';
+    }
+    std::cout << std::endl;
+
+    std::cout << "~~~ Test 11: Pardon Test ~~~" << std::endl;
+    try
+    {
+        //  ----    Creating Diferents Levels of Breaucrats ----
+        Bureaucrat highLevelB("Profesor", 1);
+        Bureaucrat midLevelB("Hermes", 40);
+        Bureaucrat lowLevelB("Fry", 150);
+        //  ----    Form Creation Testing 25-5   ----
+        AForm *myFormA = new PresidentialPardonForm("PardonA");
+        std::cout << *myFormA << std::endl;
+
+        std::cout << std::endl;
+        lowLevelB.signForm(*myFormA);       //  Failure
+        lowLevelB.executeForm(*myFormA);    //  Not Signed and low level
+        highLevelB.signForm(*myFormA);      //  Success
+        lowLevelB.executeForm(*myFormA);    //  Failure low level
+        highLevelB.executeForm(*myFormA);   //  Success
+        midLevelB.signForm(*myFormA);       //  Already Signed
+        midLevelB.executeForm(*myFormA);    //  Failure low level
+        std::cout << std::endl;
+
+        //  ----    Form Creation Status   ----
+        std::cout << std::endl;
+        std::cout << *myFormA << std::endl;
+        delete myFormA;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << "You Failed... Why?... --> "<< e.what() << '\n';
+    }
+    std::cout << std::endl;
+
     return (0);
 }
