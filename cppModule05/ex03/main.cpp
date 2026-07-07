@@ -3,6 +3,7 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 int main()
 {
@@ -242,6 +243,53 @@ int main()
         std::cout << std::endl;
         std::cout << *myFormA << std::endl;
         delete myFormA;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << "You Failed... Why?... --> "<< e.what() << '\n';
+    }
+    std::cout << std::endl;
+
+    std::cout << "~~~ Test 12: Intern Test ~~~" << std::endl;
+    try
+    {
+        //  ----    Creating Interns ----
+        Intern someRandomIntern;
+        Intern internNumberOne;
+        Intern internNumberTwo;
+        Intern internNumberThree;
+        //  ----    Form Creation Testing   ----
+        AForm *rrf, *scf, *ppf, *orf, *otf;
+        rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+        scf = internNumberOne.makeForm("shrubbery creation", "Lela");
+        ppf = internNumberTwo.makeForm("presidential pardon","Profesor");
+        orf = internNumberThree.makeForm("Not Real Form", "Fry");
+        otf = someRandomIntern.makeForm("Joke for the new", "Gokuuuuu");
+
+
+        //  ----    Form Creation Status   ----
+        std::cout << std::endl;
+        if (rrf)
+            std::cout << *rrf << std::endl;
+        if (scf)
+            std::cout << *scf << std::endl;
+        if (ppf) 
+            std::cout << *ppf << std::endl;
+        if (orf)
+            std::cout << *orf << std::endl;
+        if (otf)
+            std::cout << *otf << std::endl;
+
+        if (rrf)
+            delete rrf;
+        if (scf)
+            delete scf;
+        if (ppf) 
+            delete ppf;
+        if (orf) 
+            delete orf;
+        if (otf) 
+            delete otf;
     }
     catch(const std::exception& e)
     {

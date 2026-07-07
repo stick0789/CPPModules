@@ -16,7 +16,7 @@ class Intern
         AForm *makeForm(std::string const &formName, std::string const &target);
 
         //Exception Wrong Form
-        class NotRealForm : public std::exception
+        /*class NotRealForm : public std::exception
         {
             public:
                 //What? ->
@@ -24,7 +24,7 @@ class Intern
                 //throw?
                 //is a exception specification, it will never send an execption inside itself
                 const char *what() const throw();
-        };
+        };*/
 };
 
 #endif

@@ -29,13 +29,15 @@ SRCS 	=	Bureaucrat.cpp \
 			ShrubberyCreationForm.cpp \
 			RobotomyRequestForm.cpp \
 			PresidentialPardonForm.cpp \
+			Intern.cpp \
 			main.cpp
 
 HEADERS =	Bureaucrat.hpp \
 			AForm.hpp \
 			ShrubberyCreationForm.hpp \
 			RobotomyRequestForm.hpp \
-			PresidentialPardonForm.hpp
+			PresidentialPardonForm.hpp \
+			Intern.hpp
 
 #******************************************************************************#
 #                             OBJECTS & DEPS                                   #
@@ -52,7 +54,7 @@ all: dir $(NAME)
 
 $(NAME): Makefile $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $@
-	@echo "\033[1;32m ➜ ➜ CPP05 EX02 [✔]\033[0m"
+	@echo "\033[1;32m ➜ ➜ CPP05 EX03 [✔]\033[0m"
 
 
 $(OBJDIR)/%.o: %.cpp $(HEADERS)

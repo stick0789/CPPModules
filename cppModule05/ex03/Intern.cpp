@@ -17,10 +17,10 @@ Intern &Intern::operator=(const Intern &obj)
     return (*this);
 }
 
-const char *Intern::NotRealForm::what(void) const throw()
+/*const char *Intern::NotRealForm::what(void) const throw()
 {
     return("Dumb Inter, That Form Does'nt Exist IDIOT");
-}
+}*/
 
 AForm *Intern::makeForm(std::string const &formName, std::string const &target)
 {
@@ -57,7 +57,8 @@ AForm *Intern::makeForm(std::string const &formName, std::string const &target)
             return new PresidentialPardonForm(target);
         
         default:
-            throw NotRealForm();
+            std::cout << "Dumb Inter, That Form Does'nt Exist IDIOT "<< std::endl;
+            return NULL;
     }
     
 }
