@@ -2,6 +2,7 @@
 #define SCALARCONVERTER_HPP
 
 # include <iostream>
+#include <iomanip>
 # include <cfloat>
 # include <climits>
 # include <cstdlib>
@@ -13,8 +14,7 @@ enum input
     CHAR,
     INT,
     FLOAT,
-    DOUBLE,
-    INVALID
+    DOUBLE
 };
 
 class ScalarConverter

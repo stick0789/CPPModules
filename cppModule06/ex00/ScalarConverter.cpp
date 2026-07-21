@@ -45,15 +45,63 @@ bool isInt(const std::string &param)
 
 bool isFloat(const std::string &param)
 {
-
+    //check the special 
+    if (param == "nanf" || param == "inff" || param == "+inff" || param == "-inff")
+        return true;
+    //check the length
+    if (param.length() < 2 )
+        return false;
+    char lastFlChart = param[param.length() - 1];
+    if (lastFlChart != 'f' && lastFlChart != 'F')
+        return false;
+    size_t i = 0;
+    if (param[i] == '-' || param[i] == '+')
+        i++;
+    bool hasDot = false;
+    size_t  digits = 0;
+    for(; i < param.length() -1; i++)
+    {
+        if (param[i] == '.')
+        {
+            if (hasDot)
+                return false;
+            hasDot = true;
+        }
+        else if (std::isdigit(param[i]))
+            digits++;
+        else
+            return false;
+    }
+    return (digits > 0 && hasDot);
 }
 
 bool isDouble(const std::string &param)
 {
-
+    // check the special
+    if (param == "nan" || param == "inf" || param == "+inf" || param == "-inf")
+        return true;
+    size_t i = 0;
+    if (param[i] == '+' || param[i] == '-')
+        i++;
+    bool hasDot = false;
+    size_t digits = 0;
+    for(; i < param.length() -1; i++)
+    {
+        if (param[i] == '.')
+        {
+            if (hasDot)
+                return false;
+            hasDot = true;
+        }
+        else if (std::isdigit(param[i]))
+            digits++;
+        else
+            return false;
+    }
+    return (digits > 0 && hasDot);
 }
 
-void tochar(const std::string &param, input type)
+void toChar(const std::string &param, input type)
 {
     std::cout << "Char: ";
     if (type == CHAR)
@@ -61,6 +109,7 @@ void tochar(const std::string &param, input type)
     else
     {
         float val = std::strtof(param.c_str(), NULL);
+        // Checks the excepcional cases
         if (param == "nan" || param == "nanf" || param == "inf" || 
             param == "+inf" || param == "-inf" || param == "inff" || 
             param == "+inff" || param == "-inff")
@@ -86,14 +135,12 @@ void tochar(const std::string &param, input type)
 void toInt(const std::string &param, input type)
 {
     std::cout << "int: ";
-
     if (type == CHAR)
     {
         char c = (param.length() == 3 && param[0] == '\'') ? param[1] : param[0];
         std::cout << static_cast<int>(c) << std::endl;
         return;
     }
-
     // Checks the excepcional cases
     if (param == "nan" || param == "nanf" || param == "inf" || 
         param == "+inf" || param == "-inf" || param == "inff" || 
@@ -102,7 +149,6 @@ void toInt(const std::string &param, input type)
         std::cout << "impossible" << std::endl;
         return;
     }
-
     double val = std::strtod(param.c_str(), NULL);
     // Verify the overflow
     if (val <= INT_MAX && val >= INT_MIN)
@@ -115,12 +161,93 @@ void toInt(const std::string &param, input type)
     }
 }
 
-//toFloat
-//toDouble
+void toFloat(const std::string &param, input type)
+{
+    std::cout << "float: ";
+    if (type == CHAR)
+    {
+        char c = (param.length() == 3 && param[0] == '\'') ? param[1] : param[0];
+        float f = static_cast<float>(c);
+        std::cout << std::fixed << std::setprecision(1) << f << "f" << std::endl;
+        return;
+    }
+    if (param == "nan" || param == "nanf")
+    {
+        std::cout << "nanf" << std::endl;
+        return;
+    }
+    if (param == "inf" || param == "inff" || param == "+inf" || param == "+inff")
+    {
+        std::cout << "+inff" << std::endl;
+        return;
+    }
+    if (param == "-inf" || param == "-inff")
+    {
+        std::cout << "-inff" << std::endl;
+        return;
+    }
+    float f = std::strtof(param.c_str(), NULL);
+    std::cout << std::fixed << std::setprecision(1) << f << "f" << std::endl;
+}
+
+void toDouble(const std::string &param, input type)
+{
+    std::cout << "double: ";
+    if (type == CHAR)
+    {
+        char c = (param.length() == 3 && param[0] == '\'') ? param[1] : param[0];
+        double d = static_cast<double>(c);
+        std::cout << std::fixed << std::setprecision(1) << d << std::endl;
+        return;
+    }
+    if (param == "nan" || param == "nanf")
+    {
+        std::cout << "nan" << std::endl;
+        return;
+    }
+    if (param == "inf" || param == "inff" || param == "+inf" || param == "+inff")
+    {
+        std::cout << "+inf" << std::endl;
+        return;
+    }
+    if (param == "-inf" || param == "-inff")
+    {
+        std::cout << "-inf" << std::endl;
+        return;
+    }
+    double d = std::strtod(param.c_str(), NULL);
+    std::cout << std::fixed << std::setprecision(1) << d << std::endl;
+}
+
+
+input defType(const std::string &param)
+{
+    if (isChar(param))
+        return CHAR;
+    if (isInt(param))
+        return INT;
+    if (isFloat(param))
+        return FLOAT;
+    if (isDouble(param))
+        return DOUBLE;
+    throw Input();
+}
 
 void ScalarConverter::convert(const std::string &param)
 {
-    
+    try
+    {
+        input type = defType(param);
+
+        toChar(param, type);
+        toInt(param, type);
+        toFloat(param, type);
+        toDouble(param, type);
+    }
+    catch (const std::exception &e)
+    {
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
 }
 
 ScalarConverter::~ScalarConverter()
